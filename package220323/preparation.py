@@ -3,6 +3,13 @@ import nltk
 import pymorphy2
 import re
 import missingno as msno
+import os
+
+def lem_text(df):
+    df['normal_description'] = df.description.apply(lambda x: text_converter(x))
+    print(f' Процесс {os.getpid()} отработал. Размер переработанного датасета {df.shape}')
+    return df
+
 
 def text_converter(elem):
 
